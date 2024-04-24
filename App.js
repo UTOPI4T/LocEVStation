@@ -2,10 +2,29 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginPage from './screens/AuthScreens/Login';
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import * as SecureStore from "expo-secure-store";
 
+const tokenCache = {
+  getToken(key) {
+    try {
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
+      return null;
+    }
+  },
+  saveToken(key, value) {
+    try {
+      return SecureStore.setItemAsync(key, value);
+    } catch (err) {
+      return null;
+    }
+  },
+};
 export default function App() {
   return (
-    <ClerkProvider publishableKey={'pk_test_c3VpdGFibGUtbWVlcmthdC01MC5jbGVyay5hY2NvdW50cy5kZXYk'}>
+    <ClerkProvider 
+      tokenCache={tokenCache}
+      publishableKey={'pk_test_c3VpdGFibGUtbWVlcmthdC01MC5jbGVyay5hY2NvdW50cy5kZXYk'}>
       <View style={styles.container}>
         <SignedIn>
           <Text>You are Signed in</Text>
