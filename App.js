@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import LoginPage from './screens/AuthScreens/Login';
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
+import { NavigationContainer } from '@react-navigation/native';
+import BottomTabNav from './screens/Navigations/BottomTabNav';
 
 const tokenCache = {
   getToken(key) {
@@ -27,7 +29,9 @@ export default function App() {
       publishableKey={'pk_test_c3VpdGFibGUtbWVlcmthdC01MC5jbGVyay5hY2NvdW50cy5kZXYk'}>
       <View style={styles.container}>
         <SignedIn>
-          <Text>You are Signed in</Text>
+          <NavigationContainer>
+            <BottomTabNav/>
+          </NavigationContainer>
         </SignedIn>
         <SignedOut>
           <LoginPage/>
