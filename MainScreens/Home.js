@@ -1,17 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import AppMapView from './Maps/AppMapView'
 // import { SignInButton } from "@clerk/nextjs";
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize:100}}>Home</Text>
-      <View style={styles.boxSatu}>
-        <Text> box 1</Text>
-      </View>
-      <View style={styles.boxDua}>
-        <Text> box 2 </Text>
-      </View>
+      <Text style={{fontSize:40}}>Map View Test</Text>
+      <AppMapView/>
+      
     </View>
   )
 }
@@ -22,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     marginTop:30,
-    paddingHorizontal:5,
+    // paddingHorizontal:5,
     backgroundColor:'pink'
   }
 
