@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React, { useContext } from 'react'
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import MapViewStyle from './MapViewStyle.json';
 import { UserLocation } from '../../hooks/userLocation';
 
@@ -19,8 +19,21 @@ const AppMapView = () => {
           latitudeDelta:0.0442,
           longitudeDelta:0.0421,
         }}
-
-      />
+        
+      > 
+        <Marker
+          coordinate={{
+            latitude:location?.latitude,
+            longitude:location?.longitude
+          }}
+        >
+          <Image source={require('../../assets/above-angle-car.png')} 
+            style={{width:30,height:30}} />
+        </Marker>
+      
+      
+      </MapView>
+        
     </View>
   )
 }
