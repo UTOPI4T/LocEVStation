@@ -12,7 +12,7 @@ export default function HeaderOnMapView() {
       />
       <Text style={styles.appTitle}>Header Title</Text>
       </View>
-      <View style={{ marginBottom:10,}}>
+      <View style={{ marginBottom:50,}}>
         
       </View>
     </View>
